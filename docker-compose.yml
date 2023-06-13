@@ -10,28 +10,8 @@ services:
     volumes:
       - ./src:/var/www/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-
-    depends_on:
-      - php
-      - mysql
     networks:
-      - laravel
-
-  mysql:
-    image: mysql:5.7
-    container_name: mysql
-    restart: always
-    environment:
-      MYSQL_DATABASE: economico
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: admin.root 
-    ports:
-      - 33069:3306
-    volumes:
-      - ./mysql:/var/lib/mysql
-    networks:
-      - laravel
+      - parana-medio
 
   php:
     build:
@@ -43,8 +23,9 @@ services:
     ports:
       - 9000:80
     networks:
-      - laravel
+      - parana-medio 
 
 networks:
-  laravel:
+  parana-medio:
+    external: true
 
