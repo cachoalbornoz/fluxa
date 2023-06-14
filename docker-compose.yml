@@ -1,13 +1,28 @@
 version: '3.1'
 
 services:
-
   fluxa:
-    build: .
-    ports:
-      - "9090:80"
+    container_name: fluxa
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Argentina/Buenos_Aires
+      PUID: ${UID:-1000}
+      PGID: ${GID:-1000} 
+
     volumes:
-      - "./src:/var/www/fluxa"
+      - ./src:/var/www/fluxa
+      - ./conf/fluxa.conf:/etc/apache2/sites-enabled/fluxa.conf
+      - ./logs:/var/log/apache2
+      - ./php/config.ini:/usr/local/etc/php/conf.d/config.ini
     
+    ports:
+      - '80:80'
+    networks:
+      - parana-medio 
 
-
+networks:
+  parana-medio:
+    external: true

@@ -1,18 +1,24 @@
 FROM php:7.4-apache
-RUN apt-get update -y
-RUN apt-get install -y git
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN apt-get install -y zlib1g-dev libpng-dev
-RUN docker-php-ext-install mysqli pdo_mysql gd
-RUN mkdir -p /var/www/fluxa
+
 RUN a2enmod rewrite
-WORKDIR /var/www/fluxa
-RUN rm -r /var/www/html
+
+RUN apt-get update -y
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN apt-get install -y git zlib1g-dev libpng-dev
+
+RUN docker-php-ext-install mysqli pdo_mysql gd
+
 COPY ./comandos.txt /home/comandos.sh
 RUN chmod +x /home/comandos.sh
-CMD ["/home/comandos.sh"]
-EXPOSE 80
-CMD apachectl -D FOREGROUND
+
+RUN rm -r /var/www/html
+RUN mkdir -p /var/www/fluxa
+WORKDIR /var/www/fluxa
+
+CMD ["bash", "-c", "/home/comandos.sh && apachectl -D FOREGROUND"]
+
 
 # Instalar las dependencias de Composer
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
