@@ -20,6 +20,9 @@ WORKDIR /var/www/fluxa
 CMD ["bash", "-c", "/home/comandos.sh && apachectl -D FOREGROUND"]
 
 
+#Cambiar el puerto de Apache
+# RUN sed -i "s/Listen 80/Listen 8080/" /etc/apache2/ports.conf 
+
 # Instalar las dependencias de Composer
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 #ENV COMPOSER_ALLOW_SUPERUSER=1
