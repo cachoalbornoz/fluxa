@@ -1,7 +1,7 @@
 composer install
-chown -R www-data:www-data /var/www/notariado/public
-chown -R www-data:www-data /var/www/notariado/storage/ /var/www/notariado/bootstrap/
-ln -s /var/www/notariado/public /var/www/html
+chown -R www-data:www-data /var/www/fluxa/public
+chown -R www-data:www-data /var/www/fluxa/storage/ /var/www/fluxa/bootstrap/
+ln -s /var/www/fluxa/public /var/www/html
 php artisan migrate:fresh --seed
 php artisan key:generate
 php artisan optimize:clear
