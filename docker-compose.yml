@@ -1,33 +1,13 @@
-version: '3.1'
+version: '3'
 
 services:
-  nginx:
-    image: nginx:stable-alpine
-    container_name: nginx
-    restart: always
-    ports:
-      - 8888:80
-    volumes:
-      - ./src:/var/www/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - parana-medio
-    depends_on:
-      - php    
 
-  php:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: php
-    volumes:
-      - ./src:/var/www/html
+  notariado:
+    build: .
     ports:
-      - 9000:80
-    networks:
-      - parana-medio 
+      - "9090:80"
+    volumes:
+      - "./src:/var/www/fluxa"
+    
 
-networks:
-  parana-medio:
-    external: true
 
