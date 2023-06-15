@@ -13,16 +13,16 @@ services:
       PGID: ${GID:-1000} 
 
     volumes:
-      - ./src:/var/www/fluxa
-      - ./conf/fluxa.conf:/etc/apache2/sites-enabled/fluxa.conf
+      - ./src:/var/www/sgis
+      - ./conf/sgis.conf:/etc/apache2/sites-enabled/sgis.conf
       - ./logs:/var/log/apache2
       - ./php/config.ini:/usr/local/etc/php/conf.d/config.ini
     
     ports:
       - '80:80'
     networks:
-      - parana-medio 
+      - fluxa-network 
 
 networks:
-  parana-medio:
+  fluxa-network:
     external: true

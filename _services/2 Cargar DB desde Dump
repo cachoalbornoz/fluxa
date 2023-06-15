@@ -1,0 +1,1 @@
+docker exec -i mariadb mysql --user root --password='Gt7$sDo3c?M$rVla' fluxa < fluxa.sql

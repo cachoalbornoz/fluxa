@@ -14,8 +14,8 @@ COPY ./comandos.txt /home/comandos.sh
 RUN chmod +x /home/comandos.sh
 
 RUN rm -r /var/www/html
-RUN mkdir -p /var/www/fluxa
-WORKDIR /var/www/fluxa
+RUN mkdir -p /var/www/sgis
+WORKDIR /var/www/sgis
 
 CMD ["bash", "-c", "/home/comandos.sh && apachectl -D FOREGROUND"]
 

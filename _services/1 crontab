@@ -1,0 +1,12 @@
+# Cuando se reinicia el server, levanta los servicios
+@reboot ~/Documentos/fluxa/start_all.sh
+@reboot ~/Documentos/fluxa/make_backup.sh
+
+# Cada 12 Hs ejecuta un backup
+0 */12 * * * ~/Documentos/fluxa/make_backup.sh
+
+# A las 3 AM ejecuta la transferencia FTP
+0 3 * * * /usr/bin/php /home/administrador/Documentos/fluxa/transferir.php
+
+# Cada medianoche limpia 7 dias hacia atras los backups viejos
+@midnight ~/Documentos/fluxa/clean_backup.sh

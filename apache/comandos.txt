@@ -1,0 +1,7 @@
+composer install
+chown -R www-data:www-data /var/www/sgis/public
+chown -R www-data:www-data /var/www/sgis/storage/ /var/www/sgis/bootstrap/
+ln -s /var/www/sgis/public /var/www/html
+php artisan migrate:fresh --seed
+php artisan key:generate
+php artisan optimize:clear

@@ -1,1 +1,10 @@
-/logs/*.log
+apache/logs/*.log
+mariadb/backups/*.sql
+mariadb/data/aria*
+mariadb/data/ib*
+mariadb/data/m*
+mariadb/data/fluxa
+mariadb/data/mysql
+mariadb/data/performance_schema
+mariadb/data/sys
+mariadb/data/ddl_recovery.log
