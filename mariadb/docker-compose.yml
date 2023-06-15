@@ -13,6 +13,7 @@ services:
       --skip-log-bin
       --collation-server=utf8mb4_unicode_ci
       --default-time-zone=-03:00
+      --expire_logs_days=10
 
     environment:
       - PUID=$UID

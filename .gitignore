@@ -8,3 +8,4 @@ mariadb/data/mysql
 mariadb/data/performance_schema
 mariadb/data/sys
 mariadb/data/ddl_recovery.log
+mariadb/data/ddl_recovery-backup.log
