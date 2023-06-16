@@ -6,9 +6,8 @@ RUN apt-get update -y
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN apt-get install -y git zlib1g-dev libpng-dev
-
-RUN docker-php-ext-install mysqli pdo_mysql gd
+RUN apt-get install -y git zlib1g-dev libpng-dev libzip-dev unzip
+RUN docker-php-ext-install zip mysqli pdo_mysql gd
 
 COPY ./comandos.txt /home/comandos.sh
 RUN chmod +x /home/comandos.sh

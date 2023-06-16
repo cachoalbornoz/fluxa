@@ -11,13 +11,21 @@ services:
     command: 
       --default-authentication-plugin=mysql_native_password
       --skip-log-bin
-      --collation-server=utf8mb4_unicode_ci
       --default-time-zone=-03:00
       --expire_logs_days=10
+      --sql_mode=""
+      --character-set-server=utf8mb4 
+      --collation-server=utf8mb4_unicode_ci
+      --innodb_buffer_pool_size=512M
+      --innodb_log_file_size=64M
+      --query_cache_type=0
+      --query_cache_size=0
+      --query_cache_limit=8M
+      --thread_cache_size=30
+      --performance_schema=ON
+      --event_scheduler=ON
 
     environment:
-      - PUID=$UID
-      - PGID=$GID 
       - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
       - MYSQL_PWD=$MYSQL_ROOT_PASSWORD
       - TZ=America/Argentina/Buenos_Aires
@@ -25,6 +33,8 @@ services:
     volumes:
       - ./data:/var/lib/mysql
       - ./dump:/docker-entrypoint-initdb.d
+      - ./conf/mariadb.cnf:/etc/mysql/my.cnf:Z
+      - ./logs:/var/log/mysql:Z
     networks:
       - fluxa-network  
 

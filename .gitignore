@@ -9,3 +9,9 @@ mariadb/data/performance_schema
 mariadb/data/sys
 mariadb/data/ddl_recovery.log
 mariadb/data/ddl_recovery-backup.log
+mariadb/data/6c82875f094b.pid
+mariadb/data/8db2c466d292.pid
+mariadb/data/9e180418e60d.pid
+mariadb/data/59dbe130a3de.pid
+mariadb/data/bddaa76cf05c.pid
+mariadb/data/phpmyadmin
